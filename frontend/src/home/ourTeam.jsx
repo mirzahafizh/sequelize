@@ -8,7 +8,8 @@ const OurTeam = () => {
   useEffect(() => {
     const fetchTeamMembers = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/teams');
+        const serverUrl = import.meta.env.VITE_SERVER;
+        const response = await axios.get(`${serverUrl}/teams`);
         setTeamMembers(response.data.data); // Assuming the API returns the team members in 'data'
       } catch (error) {
         console.error('Error fetching team members:', error.response?.data?.message || error.message);
@@ -20,7 +21,7 @@ const OurTeam = () => {
   }, []);
 
   return (
-    <section id="our-team" className="container mx-auto p-8">
+    <section id="team" className="container mx-auto p-8">
       <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Our Team</h2>
       <div className="flex flex-wrap gap-6 justify-center">
         {teamMembers.map((member) => (
@@ -29,9 +30,9 @@ const OurTeam = () => {
             className="border rounded-lg shadow-lg p-4 flex flex-col items-center justify-between w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
           >
             <img
-              src={`http://localhost:3000/uploads/${member.image}`}
+              src={`${import.meta.env.VITE_SERVER}/uploads/${member.image}`}
               alt={member.name}
-              className="w-48 h-48 object-cover rounded-md mb-4"
+              className="w-48 h-48 object-cover rounded-full mb-4"
             />
             <h3 className="text-lg font-bold mb-2">{member.name}</h3>
             <p className="text-gray-600 mb-2">{member.position}</p>

@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 const ManageTeam = () => {
   const [teamMembers, setTeamMembers] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,7 +19,7 @@ const ManageTeam = () => {
 
     const fetchTeamMembers = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/teams', {
+        const response = await axios.get(`${import.meta.env.VITE_SERVER}/teams`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -26,7 +28,9 @@ const ManageTeam = () => {
         setTeamMembers(response.data.data); // Assuming the API returns the team members in 'data'
       } catch (error) {
         console.error('Error fetching team members:', error.response?.data?.message || error.message);
-        alert('Failed to fetch team members. Please try again.');
+        setError('Failed to fetch team members. Please try again.');
+      } finally {
+        setLoading(false); // Set loading to false once the fetch is done
       }
     };
 
@@ -45,7 +49,7 @@ const ManageTeam = () => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:3000/teams/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_SERVER}/teams/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -61,6 +65,9 @@ const ManageTeam = () => {
       alert('Failed to delete team member. Please try again.');
     }
   };
+
+  if (loading) return <p>Loading team members...</p>; // Loading state
+  if (error) return <p>{error}</p>; // Error state
 
   return (
     <div className="p-4">
@@ -79,9 +86,9 @@ const ManageTeam = () => {
             className="border rounded-lg shadow-lg p-4 flex flex-col items-center justify-between"
           >
             <img
-              src={`http://localhost:3000/uploads/${member.image}`}
+              src={`${import.meta.env.VITE_SERVER}/uploads/${member.image}`}
               alt={member.name}
-              className="w-full h-48 object-cover rounded-md mb-4"
+              className="w-48 h-48 object-cover rounded-full mb-4"
             />
             <h3 className="text-lg font-bold mb-2">{member.name}</h3>
             <p className="text-gray-600 mb-2">{member.position}</p>

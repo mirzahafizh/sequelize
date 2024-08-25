@@ -1,6 +1,7 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
+import AddProject from './components/AddProject';
 import AddTeamMember from './components/AddTeamMember';
 import EditProject from './components/EditProject';
 import EditTeamMember from './components/EditTeamMember';
@@ -15,10 +16,12 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         {/* Wrap all dashboard-related pages in DashboardLayout */}
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route path="manage_project" element={<ManageProject />} />
+          <Route path="add_project" element={<AddProject />} />
+
           <Route path="edit_project/:id" element={<EditProject />} />
           <Route index element={<ManageProject />} /> {/* Default dashboard content */}
         </Route>

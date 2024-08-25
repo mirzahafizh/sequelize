@@ -16,7 +16,7 @@ const ManageProject = () => {
 
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/projects', {
+        const response = await axios.get(`${import.meta.env.VITE_SERVER}/projects`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -40,7 +40,7 @@ const ManageProject = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:3000/projects/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_SERVER}/projects/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -74,7 +74,7 @@ const ManageProject = () => {
             className="border rounded-lg shadow-lg p-4 flex flex-col items-center justify-between"
           >
             <img
-              src={`http://localhost:3000/uploads/${project.image}`}
+              src={`${import.meta.env.VITE_SERVER}/uploads/${project.image}`}
               alt={project.name}
               className="w-full h-48 object-cover rounded-md mb-4"
             />

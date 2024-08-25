@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Skills = () => {
-  const baseImageUrl = 'http://localhost:3000/uploads/assets';
+  const baseImageUrl = `${import.meta.env.VITE_SERVER}/uploads/assets`;
 
   return (
     <section id="skills" className="container mx-auto p-8">
@@ -15,36 +15,15 @@ const Skills = () => {
             </svg>
             <h3 className="text-xl font-semibold mb-2">Pengembangan Web</h3>
           </div>
-          <p className="text-gray-600 mb-4">Berpengalaman dalam menciptakan pengalaman web yang dinamis menggunakan HTML, CSS, dan JavaScript, dengan keahlian dalam framework modern seperti React. Terampil dalam pengembangan server-side dengan PHP dan Node.js, serta berpengalaman dalam mengelola basis data dengan MySQL.</p>
+          <p className="text-gray-600 mb-4">
+            Berpengalaman dalam menciptakan pengalaman web yang dinamis menggunakan HTML, CSS, dan JavaScript, dengan keahlian dalam framework modern seperti React. Terampil dalam pengembangan server-side dengan PHP dan Node.js, serta berpengalaman dalam mengelola basis data dengan MySQL.
+          </p>
           <div className="flex flex-wrap gap-4">
-            {/* HTML Icon */}
-            <div className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full">
-              <img src={`${baseImageUrl}/html.png`} alt="HTML" className="w-6 h-6 object-cover" />
-            </div>
-            {/* CSS Icon */}
-            <div className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full">
-              <img src={`${baseImageUrl}/css.svg.png`} alt="CSS" className="w-6 h-6" />
-            </div>
-            {/* JavaScript Icon */}
-            <div className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full">
-              <img src={`${baseImageUrl}/js.png`} alt="JavaScript" className="w-6 h-6 object-cover" />
-            </div>
-            {/* React Icon */}
-            <div className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full">
-              <img src={`${baseImageUrl}/react.png`} alt="React" className="w-6 h-6 object-cover" />
-            </div>
-            {/* PHP Icon */}
-            <div className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full">
-              <img src={`${baseImageUrl}/php.png`} alt="PHP" className="w-6 h-6 object-cover" />
-            </div>
-            {/* Node.js Icon */}
-            <div className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full">
-              <img src={`${baseImageUrl}/node.png`} alt="Node.js" className="w-6 h-6 object-fit" />
-            </div>
-            {/* MySQL Icon */}
-            <div className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full">
-              <img src={`${baseImageUrl}/mysql.png`} alt="MySQL" className="w-6 h-6" />
-            </div>
+            {['html.png', 'css.svg.png', 'js.png', 'react.png', 'php.png', 'node.png', 'mysql.png'].map((icon) => (
+              <div key={icon} className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full">
+                <img src={`${baseImageUrl}/${icon}`} alt={icon.split('.')[0]} className="w-6 h-6 object-cover" />
+              </div>
+            ))}
           </div>
         </div>
 
@@ -56,9 +35,10 @@ const Skills = () => {
             </svg>
             <h3 className="text-xl font-semibold mb-2">UI/UX Design</h3>
           </div>
-          <p className="text-gray-600 mb-4">Berpengalaman dalam menciptakan desain yang ramah pengguna dan menarik secara visual menggunakan alat seperti Figma.</p>
+          <p className="text-gray-600 mb-4">
+            Berpengalaman dalam menciptakan desain yang ramah pengguna dan menarik secara visual menggunakan alat seperti Figma.
+          </p>
           <div className="flex flex-wrap gap-4">
-            {/* Figma Icon */}
             <div className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full">
               <img src={`${baseImageUrl}/figma.png`} alt="Figma" className="w-6 h-6" />
             </div>

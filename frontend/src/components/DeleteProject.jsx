@@ -14,7 +14,7 @@ const DeleteProject = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:3000/projects/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_SERVER}/projects/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

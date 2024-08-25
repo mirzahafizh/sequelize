@@ -4,7 +4,6 @@ const app = express();
 const path = require('path');
 // Use CORS middleware with configuration
 app.use(cors({
-  origin: 'http://localhost:5173', // Frontend origin
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
   credentials: true, // Allow credentials (like cookies) if needed
 }));

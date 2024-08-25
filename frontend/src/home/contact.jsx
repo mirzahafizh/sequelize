@@ -22,7 +22,7 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3000/contact/send', formData);
+      const response = await axios.post(`${import.meta.env.VITE_SERVER}/contact/send`, formData);
       if (response.data.success) {
         setIsSuccess(true);
         setAlertMessage('Your message has been sent successfully.');

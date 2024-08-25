@@ -31,7 +31,7 @@ const AddTeamMember = () => {
     }
 
     try {
-      await axios.post('http://localhost:3000/teams', formData, {
+      await axios.post(`${import.meta.env.VITE_SERVER}/teams`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,

@@ -24,13 +24,13 @@ const EditTeamMember = () => {
 
     const fetchMember = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/teams/${id}`, {
+        const response = await axios.get(`${import.meta.env.VITE_SERVER}/teams/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         setMember(response.data.data);
-        setImagePreview(`http://localhost:3000/uploads/${response.data.data.image}`);
+        setImagePreview(`${import.meta.env.VITE_SERVER}/uploads/${response.data.data.image}`);
       } catch (error) {
         console.error('Error fetching team member:', error.response?.data?.message || error.message);
         alert('Failed to fetch team member. Please try again.');
@@ -70,7 +70,7 @@ const EditTeamMember = () => {
     }
 
     try {
-      await axios.put(`http://localhost:3000/teams/${id}`, formData, {
+      await axios.put(`${import.meta.env.VITE_SERVER}/teams/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',

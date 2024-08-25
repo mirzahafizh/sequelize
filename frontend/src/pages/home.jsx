@@ -1,5 +1,6 @@
 import React from 'react';
 import Contact from '../home/contact';
+import Footer from '../home/footer';
 import Hero from '../home/hero'; // Import the Hero component
 import Navbar from '../home/navbar';
 import OurTeam from '../home/ourTeam';
@@ -15,6 +16,7 @@ const Home = () => {
       <OurTeam />
       <Project />
       <Contact />
+      <Footer />
     </div>
   );
 };
